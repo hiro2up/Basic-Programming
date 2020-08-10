@@ -65,9 +65,10 @@ class Player:
 ######### Game Logic
 
 def war_game():
-
+    # Beginning of the game
     print('Welcome to War, the Card Game!')
 
+    # Player's names
     player1_name = input("Please insert Player 1's name: ")
     player2_name = input("Please insert Player 2's name: ")
     print('\n\n')
@@ -79,8 +80,8 @@ def war_game():
     new_deck.shuffle()
 
     # Constructing each player's deck
+    # It basically distributes one card for each player alternating them
     builder = 1
-
 
     for each in range(1,53):
         if builder == 1:
@@ -93,6 +94,7 @@ def war_game():
             builder = 1
 
     # Battle
+    # Each player takes one card from the top of their deck
 
     while len(player1.all_cards) > 0 and len(player2.all_cards) > 0:
         battle_cards = [player1.remove_one(),player2.remove_one()]
@@ -101,24 +103,26 @@ def war_game():
         print(f'Player 1 plays {battle_cards[i]}')
         print(f'Player 2 plays {battle_cards[j]}')
 
-        if battle_cards[i].value > battle_cards[j].value:
+        #Cards are compared to check who won the battle
+        if battle_cards[i].value > battle_cards[j].value: # Player 1 wins and collects all cards
             print('Player 1 wins battle!')
             player1.add_cards(battle_cards)
             battle_cards.clear()
             print(player1)
             print(player2)
             print('\n\n')
-        elif battle_cards[i].value < battle_cards[j].value:
+        elif battle_cards[i].value < battle_cards[j].value: # Player 2 wins and collects all cards
             print('Player 2 wins battle!')
             player2.add_cards(battle_cards)
             battle_cards.clear()
             print(player1)
             print(player2)
             print('\n\n')
-        elif battle_cards[i].value == battle_cards[j].value:
+        elif battle_cards[i].value == battle_cards[j].value: # In case of a tie, a WAR starts
             print("It's a tie! Time for WAR!\n")
-            # In case of a tie, each player loses +2 cards and battle for the total amount in play
+            # In case of a tie, each player picks +2 cards and battle for the total amount in the pile
             # (6 in the mount + 2 from new battle)
+            # If a player does not have enough cards for a WAR, they lose the game
             if len(player1.all_cards) < 3:
                 print('Player 1 does not have enough cards to continue.')
                 print('Player 2 wins the game!')
@@ -139,6 +143,7 @@ def war_game():
                     print(f'Player 1 plays {battle_cards[i]}')
                     print(f'Player 2 plays {battle_cards[j]}')
 
+                    # Battle for the pile of cards
                     if battle_cards[i].value > battle_cards[j].value:
                         print('Player 1 wins WAR!')
                         player1.add_cards(battle_cards)
