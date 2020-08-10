@@ -1,3 +1,12 @@
+'''
+o deck é dividido em dois e cada jogador fica com 26 cartas.
+Cada jogador sempre pega as cartas de cima do seu deck e joga.
+O jogador que tiver a carta com maior número ganha e leva a carta do outro
+Em caso de empate, cada jogador tira mais duas cartas e adiciona ao monte (Início de uma WAR)
+Cada jogador escolhe mais uma carta e quem tiver o maior número leva todo o monte.
+
+'''
+
 import random
 suits = ('Hearts','Diamonds','Clubs','Spades')
 ranks = ('Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Jack','Queen','King','Ace')
